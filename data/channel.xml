@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="channel_asset" model="mail.channel">
+            <field name="name">Assets</field>
+            <field name="description">Assets Notification Channel</field>
+            <field name="public">groups</field>
+            <field name="group_public_id" ref="account.group_account_invoice"/>
+            <field name="group_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

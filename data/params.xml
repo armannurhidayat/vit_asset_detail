@@ -1,0 +1,11 @@
+<odoo>
+	<data>
+		
+		<record id="params_jatuh_tempo_asset" model="ir.config_parameter">
+            <field name="name">Params Jatuh Tempo Asset</field>
+            <field name="key">cobaan</field>
+            <field name="value">10</field>
+        </record>
+
+	</data>
+</odoo>

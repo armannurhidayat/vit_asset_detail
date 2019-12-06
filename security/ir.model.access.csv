@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vit_asset_detail_vit_asset_detail,vit_asset_detail.vit_asset_detail,model_vit_asset_detail_vit_asset_detail,,1,0,0,0

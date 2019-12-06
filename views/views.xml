@@ -1,0 +1,53 @@
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="view_account_asset_asset_form">
+      <field name="name">view_account_asset_asset_form.form</field>
+      <field name="model">account.asset.asset</field>
+      <field name="inherit_id" ref="om_account_asset.view_account_asset_asset_form"/>
+
+      <field name="arch" type="xml">
+        <notebook position="inside">
+          <page string="Detail Asset">
+            <group>
+              <group>
+                <field name="pengadaan"/>
+                <field name="sertifikat"/>
+                <field name="processor"/>
+                <field name="harddisk"/>
+                <field name="memory"/>
+                <field name="budget"/>
+                <field name="kd_wilayah"/>
+                <field name="tgl_jp_pajak"/>
+                <field name="tgl_jp_asuransi"/>
+              </group>
+              <group>
+                <field name="no_polisi"/>
+                <field name="tgl_pajak"/>
+                <field name="tgl_asuransi"/>
+                <field name="tanah"/>
+                <field name="bangunan"/>
+                <field name="no_sertifikat"/>
+                <field name="tgl_sertifikat"/>
+                <field name="alamat"/>
+              </group>
+            </group>
+          </page>
+        </notebook>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_account_asset_asset_tree">
+      <field name="name">view_account_asset_asset_tree</field>
+      <field name="model">account.asset.asset</field>
+      <field name="inherit_id" ref="om_account_asset.view_account_asset_asset_purchase_tree"/>
+
+      <field name="arch" type="xml">
+          <field name="name" position="after">
+            <field name="pengadaan"/>
+          </field>
+      </field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="cron_cek_jatuh_tempo_asset" model="ir.cron">
+            <field name="name">Cek Jatuh Tempo Asset</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model_id" ref="model_account_asset_asset"/>
+            <field name="state">code</field>
+            <field name="code">model.cek_jatuh_tempo()</field>
+        </record>
+
+    </data>
+</odoo>
