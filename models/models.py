@@ -4,7 +4,8 @@ from odoo import models, fields, api
 import time
 import logging
 _logger = logging.getLogger(__name__)
-from datetime import datetime, timedelta
+# from datetime import datetime
+import datetime
 
 class Asset(models.Model):
 	_name = 'account.asset.asset'
@@ -90,12 +91,12 @@ class Asset(models.Model):
 
 
 	def cek_jatuh_tempo(self):
-		# date_jt = hari + 10 hari
-		date_jt	= datetime.now() + timedelta(days=10)
-
-		assets	= self.env['account.asset.asset'].search([('tgl_jp_pajak', '=', date_jt)])
-		days	= date_jt - datetime.now()
-		days 	= str(days) # convert to string
+		# date_jt = hari ini + 10 hari
+		date_jt	= datetime.datetime.now() + datetime.timedelta(days=10)
+		assets	= self.env['account.asset.asset'].search([('tgl_jp_pajak', '<=', date_jt)])
+		
 		for asset in assets:
-			asset.message_post(body="Asset ini akan jatuh tempo "+ days[0:1] +" hari lagi",
+			# Kalkulasi
+			days = asset.tgl_jp_pajak - datetime.date.today()
+			asset.message_post(body="Asset jatuh tempo "+ str(days)[0:8],
 							  message_type='comment', subtype='mail.mt_comment')
