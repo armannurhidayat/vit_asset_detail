@@ -93,10 +93,15 @@ class Asset(models.Model):
 	def cek_jatuh_tempo(self):
 		# date_jt = hari ini + 10 hari
 		date_jt	= datetime.datetime.now() + datetime.timedelta(days=10)
-		assets	= self.env['account.asset.asset'].search([('tgl_jp_pajak', '<=', date_jt)])
+		pajak	= self.env['account.asset.asset'].search([('tgl_jp_pajak', '<=', date_jt)])
+		asuransi= self.env['account.asset.asset'].search([('tgl_jp_asuransi', '<=', date_jt)])
 		
-		for asset in assets:
-			# Kalkulasi
-			days = asset.tgl_jp_pajak - datetime.date.today()
-			asset.message_post(body="Asset jatuh tempo "+ str(days)[0:8],
+		for pj in pajak:
+			days_pajak = pj.tgl_jp_pajak - datetime.date.today()
+			pj.message_post(body="Asset Jatuh Tempo Pajak "+ str(days_pajak)[0:8],
+							  message_type='comment', subtype='mail.mt_comment')
+
+		for asu in asuransi:
+			days_asuransi = asu.tgl_jp_asuransi - datetime.date.today()
+			asu.message_post(body="Asset Jatuh Tempo Asuransi "+ str(days_asuransi)[0:8],
 							  message_type='comment', subtype='mail.mt_comment')
